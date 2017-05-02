@@ -2,11 +2,16 @@
 
 A simple script installer for [flywaydb cli](https://flywaydb.org/documentation/commandline/)
 
-## Usage Example
+## Usage Examples
 
 ```
 "scripts": {
   "migrate": "flyway -X -configFile=conf/flyway.conf migrate"
+}
+```
+```
+"scripts": {
+  "migrate": "flyway -X -user=postgres -schemas=public,another migrate"
 }
 ```
 
@@ -20,7 +25,7 @@ After looking into a couple other packages and having issues with JS wrappers. I
 
 ## CMD Reference
 
-This simple installs the latest [fly command-line tools](https://flywaydb.org/documentation/commandline/) from source. All the auguments that flyway allows are available. 
+This simple installs the latest [flyway command-line tools](https://flywaydb.org/documentation/commandline/) from source. All the auguments that flyway allows are available. 
 
 ## Tests
 
