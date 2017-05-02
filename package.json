@@ -1,0 +1,35 @@
+{
+  "name": "flywaydb-cli",
+  "version": "0.0.1",
+  "description": "Install latest flywaydb-cli as a node module",
+  "main": "index.js",
+  "bin": {
+    "flyway": "./bin/flyway"
+  },
+  "scripts": {
+    "install": "node install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sgraham785/flywaydb-cli.git"
+  },
+  "keywords": [
+    "flyway",
+    "flywaydb",
+    "flywaydb-cli",
+    "database migrations"
+  ],
+  "author": "Sean Graham",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/sgraham785/flywaydb-cli/issues"
+  },
+  "homepage": "https://github.com/sgraham785/flywaydb-cli#readme",
+  "dependencies": {
+    "extract-zip": "^1.6.5",
+    "filesize": "^3.5.9",
+    "progress": "^2.0.0",
+    "request": "^2.81.0",
+    "request-progress": "^3.0.0"
+  }
+}
