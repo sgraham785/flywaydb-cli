@@ -1,20 +1,4 @@
 # flywaydb-cli
-Node module installer for [flywaydb cli](https://flywaydb.org/documentation/commandline/)
-
-## Motivation
-I found myself wanting to use flyway on my build systems and dreading installing and maintaining the cli with all of the PATH requirements. This simple wrapper will download the latest Flyway cli on install and provide a hook for your package scripts.
-
-## Example run-script
-```
-"scripts": {
-  "migrate": "flyway -configFile=conf/flyway.conf migrate"
-}
-```
-
-See [Example config file for inspiration](example_config.js)
-
-
-## Synopsis
 
 A simple script installer for [flywaydb cli](https://flywaydb.org/documentation/commandline/)
 
@@ -28,7 +12,7 @@ A simple script installer for [flywaydb cli](https://flywaydb.org/documentation/
 
 ## Motivation
 
-After looking into a couple other packages and 
+After looking into a couple other packages and having issues with JS wrappers. I decided to simply install flyway command-line tools from source and make it usage in npm.
 
 ## Installation
 
@@ -36,7 +20,7 @@ After looking into a couple other packages and
 
 ## CMD Reference
 
-This simple
+This simple installs the latest [fly command-line tools](https://flywaydb.org/documentation/commandline/) from source. All the auguments that flyway allows are available. 
 
 ## Tests
 
