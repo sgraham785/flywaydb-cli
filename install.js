@@ -227,3 +227,8 @@ request(`${repoBaseUrl}/maven-metadata.xml`, function (err, response) {
     }
   }
 })
+
+module.exports = {
+  // _makeBinLink: makeBinLink
+  _install: install
+}
