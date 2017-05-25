@@ -59,8 +59,9 @@ export const downloadFlywaySource = (source) => {
   if (fs.existsSync(source.filename)) {
     return Promise.resolve(source.filename)
   } else {
-    rimraf(downloadDir)
-    fs.mkdir(downloadDir)
+    rimraf(downloadDir, () => {
+      fs.mkdir(downloadDir)
+    })
   }
 
   console.log('Downloading', source.url)

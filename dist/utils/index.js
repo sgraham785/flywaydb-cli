@@ -59,9 +59,8 @@ const repoBaseUrl = 'https://repo1.maven.org/maven2/org/flywaydb/flyway-commandl
 const getReleaseSource = exports.getReleaseSource = () => (0, _requestPromise2.default)({
   uri: `${repoBaseUrl}/maven-metadata.xml`
 }).then(response => {
-  let mavenMetadata = response;
   let releaseRegularExp = new RegExp('<release>(.+)</release>');
-  let releaseVersion = mavenMetadata.match(releaseRegularExp)[1];
+  let releaseVersion = response.match(releaseRegularExp)[1];
 
   let sources = {
     'win32': {
@@ -99,7 +98,9 @@ const downloadFlywaySource = exports.downloadFlywaySource = source => {
   if (_fs2.default.existsSync(source.filename)) {
     return Promise.resolve(source.filename);
   } else {
-    _fs2.default.mkdir(downloadDir);
+    (0, _rimraf2.default)(downloadDir, () => {
+      _fs2.default.mkdir(downloadDir);
+    });
   }
 
   console.log('Downloading', source.url);
