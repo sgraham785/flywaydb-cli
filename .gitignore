@@ -39,4 +39,3 @@ jspm_packages
 # Flyway source files
 lib
 tmp
-install.js
