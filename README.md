@@ -21,7 +21,7 @@ After looking into a couple other packages and having issues with JS wrappers. I
 
 ## Installation
 
-`npm i -S flyway-cli`
+`npm i -S flywaydb-cli`
 
 ## CMD Reference
 
