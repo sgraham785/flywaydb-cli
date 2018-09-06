@@ -60,7 +60,7 @@ export const downloadFlywaySource = (source) => {
     return Promise.resolve(source.filename)
   } else {
     rimraf(downloadDir, () => {
-      fs.mkdir(downloadDir)
+      fs.mkdirSync(downloadDir)
     })
   }
 
@@ -174,7 +174,7 @@ export const makeBinLink = (libDir) => {
         fs.unlinkSync(path.join(binDir, 'flyway'))
         fs.symlinkSync(path.join(flywayDir, 'flyway'), path.join(binDir, 'flyway'))
       } else {
-        fs.mkdir(binDir)
+        fs.mkdirSync(binDir)
         fs.symlinkSync(path.join(flywayDir, 'flyway'), path.join(binDir, 'flyway'))
       }
 

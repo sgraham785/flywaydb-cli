@@ -99,7 +99,7 @@ const downloadFlywaySource = exports.downloadFlywaySource = source => {
     return Promise.resolve(source.filename);
   } else {
     (0, _rimraf2.default)(downloadDir, () => {
-      _fs2.default.mkdir(downloadDir);
+      _fs2.default.mkdirSync(downloadDir);
     });
   }
 
@@ -212,7 +212,7 @@ const makeBinLink = exports.makeBinLink = libDir => {
         _fs2.default.unlinkSync(_path2.default.join(binDir, 'flyway'));
         _fs2.default.symlinkSync(_path2.default.join(flywayDir, 'flyway'), _path2.default.join(binDir, 'flyway'));
       } else {
-        _fs2.default.mkdir(binDir);
+        _fs2.default.mkdirSync(binDir);
         _fs2.default.symlinkSync(_path2.default.join(flywayDir, 'flyway'), _path2.default.join(binDir, 'flyway'));
       }
 
