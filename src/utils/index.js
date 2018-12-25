@@ -168,14 +168,15 @@ export const makeBinLink = (libDir) => {
     let versionDirs = flywayVersionDir(libDir)
     let flywayDir = path.join(libDir, versionDirs[0])
     let binDir = path.join(__dirname, '../../', 'bin')
+    let relPath = path.relative(binDir, flywayDir);
 
     if (fs.existsSync(flywayDir)) {
       if (fs.existsSync(binDir)) {
         fs.unlinkSync(path.join(binDir, 'flyway'))
-        fs.symlinkSync(path.join(flywayDir, 'flyway'), path.join(binDir, 'flyway'))
+        fs.symlinkSync(path.join(relPath, 'flyway'), path.join(binDir, 'flyway'))
       } else {
         fs.mkdirSync(binDir)
-        fs.symlinkSync(path.join(flywayDir, 'flyway'), path.join(binDir, 'flyway'))
+        fs.symlinkSync(path.join(relPath, 'flyway'), path.join(binDir, 'flyway'))
       }
 
       resolve()
