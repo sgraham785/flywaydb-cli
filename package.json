@@ -32,6 +32,7 @@
   },
   "homepage": "https://github.com/sgraham785/flywaydb-cli#readme",
   "dependencies": {
+    "app-root-path": "^2.1.0",
     "extract-zip": "^1.6.5",
     "filesize": "^3.5.9",
     "fs-extra": "^7.0.1",

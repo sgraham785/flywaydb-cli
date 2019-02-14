@@ -54,8 +54,8 @@ const env = process.env;
 const repoBaseUrl = "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline";
 
 const readDotFlywayFile = () => {
-  let dotFlywayPath = _fsExtra2.default.existsSync(_path2.default.resolve(process.cwd(), ".flyway")) ? _path2.default.resolve(process.cwd(), ".flyway") : "";
-
+  let dotFlywayPath = _fsExtra2.default.existsSync(_path2.default.resolve(__dirname, "../../../../", ".flyway")) ? _path2.default.resolve(__dirname, "../../../../", ".flyway") : "";
+  console.log("readDotFlywayFile dotFlywayPath -> ", dotFlywayPath);
   let encoding = "utf8";
 
   var version = dotFlywayPath !== "" ? _fsExtra2.default.readFileSync(dotFlywayPath, { encoding }) : "";

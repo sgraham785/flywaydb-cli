@@ -15,14 +15,18 @@ const repoBaseUrl =
   "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline";
 
 const readDotFlywayFile = () => {
-  let dotFlywayPath = fs.existsSync(path.resolve(process.cwd(), ".flyway"))
-    ? path.resolve(process.cwd(), ".flyway")
+  let resolveDotFlywayPath = fs.existsSync(
+    path.resolve(__dirname, "../../../../", ".flyway")
+  )
+    ? path.resolve(__dirname, "../../../../", ".flyway")
     : "";
-
+  console.log("readDotFlywayFile dotFlywayPath -> ", resolveDotFlywayPath);
   let encoding = "utf8";
 
   var version =
-    dotFlywayPath !== "" ? fs.readFileSync(dotFlywayPath, { encoding }) : "";
+    resolveDotFlywayPath !== ""
+      ? fs.readFileSync(resolveDotFlywayPath, { encoding })
+      : "";
 
   version !== "" ? console.log("Found version in .flyway -> ", version) : "";
   return version;

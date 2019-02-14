@@ -37,8 +37,11 @@ jspm_packages
 .node_repl_history
 
 # Flyway source files
+bin
 lib
 tmp
+!bin/flyway
+!bin/flyway.cmd
 
 # IntelliJ IDEA
 .idea
