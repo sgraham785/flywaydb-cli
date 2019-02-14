@@ -1,17 +1,17 @@
 import {
   getReleaseSource,
   downloadFlywaySource,
-  extractTolib,
-  makeBinLink,
-  rmTmpDir
-} from './utils'
+  extractToLib,
+  copyToBin,
+  cleanupDirs
+} from "./utils";
 
 getReleaseSource()
   .then(downloadFlywaySource)
-  .then(extractTolib)
-  .then(makeBinLink)
-  .then(rmTmpDir)
-  .catch(function (reason) {
+  .then(extractToLib)
+  .then(copyToBin)
+  .then(cleanupDirs)
+  .catch(function(reason) {
     // Handle failed request...
-    console.error(`error --> ${reason}`)
-  })
+    console.error(`error --> ${reason}`);
+  });

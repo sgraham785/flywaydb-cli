@@ -4,15 +4,15 @@
   "description": "Install latest flywaydb-cli as a node module",
   "main": "dist/installer.js",
   "bin": {
-    "flyway": "./bin/flyway"
+    "flyway": "./bin/flyway",
+    "flyway.cmd": "./bin/flyway.cmd"
   },
   "scripts": {
     "start": "babel src -w -d dist",
     "build": "babel src -d dist",
     "install": "node dist/installer.js",
     "test": "nyc ava",
-    "test:watch": "ava --watch --verbose",
-    "prepublish": "rm ./bin/flyway && touch ./bin/flyway"
+    "test:watch": "ava --watch --verbose"
   },
   "repository": {
     "type": "git",
@@ -33,6 +33,7 @@
   "dependencies": {
     "extract-zip": "^1.6.5",
     "filesize": "^3.5.9",
+    "fs-extra": "^7.0.1",
     "progress": "^2.0.0",
     "request": "^2.81.0",
     "request-progress": "^3.0.0",
