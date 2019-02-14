@@ -9,6 +9,7 @@ A simple script installer for [flywaydb cli](https://flywaydb.org/documentation/
   "migrate": "flyway -X -configFile=conf/flyway.conf migrate"
 }
 ```
+
 ```
 "scripts": {
   "migrate": "flyway -X -user=postgres -schemas=public,another migrate"
@@ -23,9 +24,15 @@ After looking into a couple other packages and having issues with JS wrappers. I
 
 `npm i -S flywaydb-cli`
 
+## Flyway version support
+
+`flywaydb-cli` now supports setting the version of Flyway that will be installed. By default `flywaydb-cli` will resolve the latest "releasedVersion" which is published by Flyway. If you wish to set the version place a `.flyway` file in your applications root path with the version you want to install. Version numbers are absolute, so look [here](https://repo1.maven.org/maven2/org/flywaydb/flyway-commandline/maven-metadata.xml) for the available versions list.
+
+Note, only the absolute version number is allowed in the `.flyway` file e.g. 5.2.4
+
 ## CMD Reference
 
-This simple installs the latest [flyway command-line tools](https://flywaydb.org/documentation/commandline/) from source. All the auguments that flyway allows are available. 
+This simple installs the latest [flyway command-line tools](https://flywaydb.org/documentation/commandline/) from source. All the auguments that flyway allows are available.
 
 ## Tests
 

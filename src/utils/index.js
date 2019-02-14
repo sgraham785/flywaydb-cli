@@ -29,7 +29,7 @@ const readDotFlywayFile = () => {
       : "";
 
   version !== "" ? console.log("Found version in .flyway -> ", version) : "";
-  return version;
+  return version.trim();
 };
 
 /**
