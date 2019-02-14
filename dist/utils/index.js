@@ -55,7 +55,7 @@ const repoBaseUrl = "https://repo1.maven.org/maven2/org/flywaydb/flyway-commandl
 
 const readDotFlywayFile = () => {
   let resolveDotFlywayPath = _fsExtra2.default.existsSync(_path2.default.resolve(__dirname, "../../../../", ".flyway")) ? _path2.default.resolve(__dirname, "../../../../", ".flyway") : "";
-  console.log("readDotFlywayFile dotFlywayPath -> ", resolveDotFlywayPath);
+  // console.log("readDotFlywayFile dotFlywayPath -> ", resolveDotFlywayPath);
   let encoding = "utf8";
 
   var version = resolveDotFlywayPath !== "" ? _fsExtra2.default.readFileSync(resolveDotFlywayPath, { encoding }) : "";
@@ -73,7 +73,7 @@ const getReleaseSource = exports.getReleaseSource = () => (0, _requestPromise2.d
   let releaseRegularExp = new RegExp("<release>(.+)</release>");
   let releaseVersion = readDotFlywayFile() || response.match(releaseRegularExp)[1];
 
-  console.log("getReleaseSource releaseVersion -> ", releaseVersion);
+  // console.log("getReleaseSource releaseVersion -> ", releaseVersion);
   let sources = {
     win32: {
       url: `${repoBaseUrl}/${releaseVersion}/flyway-commandline-${releaseVersion}-windows-x64.zip`,

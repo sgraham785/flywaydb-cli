@@ -20,7 +20,7 @@ const readDotFlywayFile = () => {
   )
     ? path.resolve(__dirname, "../../../../", ".flyway")
     : "";
-  console.log("readDotFlywayFile dotFlywayPath -> ", resolveDotFlywayPath);
+  // console.log("readDotFlywayFile dotFlywayPath -> ", resolveDotFlywayPath);
   let encoding = "utf8";
 
   var version =
@@ -43,7 +43,7 @@ export const getReleaseSource = () =>
     let releaseVersion =
       readDotFlywayFile() || response.match(releaseRegularExp)[1];
 
-    console.log("getReleaseSource releaseVersion -> ", releaseVersion);
+    // console.log("getReleaseSource releaseVersion -> ", releaseVersion);
     let sources = {
       win32: {
         url: `${repoBaseUrl}/${releaseVersion}/flyway-commandline-${releaseVersion}-windows-x64.zip`,
