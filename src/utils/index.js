@@ -202,7 +202,9 @@ export const copyToBin = libDir => {
     if (fs.existsSync(flywayDir)) {
       rimraf.sync(path.join(__dirname, "../../", "bin"));
 
-      fs.removeSync(path.join(flywayDir, "jre", "lib", "amd64", "server", "libjsig.so")) // Broken link, we need to delete it to avoid the copy to fail
+      if (fs.existsSync(path.join(flywayDir, "jre", "lib", "amd64"))) {
+        fs.removeSync(path.join(flywayDir, "jre", "lib", "amd64", "server", "libjsig.so")) // Broken link, we need to delete it to avoid the copy to fail
+      }
       fs.copySync(flywayDir, binDir);
 
       resolve();
