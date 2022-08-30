@@ -95,12 +95,17 @@ const getReleaseSource = exports.getReleaseSource = () => (0, _requestPromise2.d
   return sources[_os2.default.platform()];
 });
 
+// copied from https://github.com/getsentry/sentry-cli/blob/c65df4fba17101e60e8c31f378f6001b514e5a42/scripts/install.js#L123-L131
+const getNpmCache = () => {
+  return env.npm_config_cache || env.npm_config_cache_folder || env.npm_config_yarn_offline_mirror || (env.APPDATA ? _path2.default.join(env.APPDATA, 'npm-cache') : _path2.default.join(_os2.default.homedir(), '.npm'));
+};
+
 /**
  * @param {any} source
  * @returns source.filename
  */
 const downloadFlywaySource = exports.downloadFlywaySource = source => {
-  let downloadDir = _path2.default.join(__dirname, "../../", "tmp");
+  let downloadDir = _path2.default.join(getNpmCache(), 'flywaydb-cli');
 
   if (!source) {
     throw new Error("Your platform is not supported");
@@ -108,6 +113,7 @@ const downloadFlywaySource = exports.downloadFlywaySource = source => {
 
   source.filename = _path2.default.join(downloadDir, source.filename);
   if (_fsExtra2.default.existsSync(source.filename)) {
+    console.log("Cached file exists, skipping download", source.filename);
     return Promise.resolve(source.filename);
   } else {
     (0, _rimraf2.default)(downloadDir, () => {
@@ -247,6 +253,5 @@ const flywayVersionDir = libDir => {
 };
 
 const cleanupDirs = exports.cleanupDirs = () => {
-  _rimraf2.default.sync(_path2.default.join(__dirname, "../../", "tmp"));
   _rimraf2.default.sync(_path2.default.join(__dirname, "../../", "lib"));
 };
