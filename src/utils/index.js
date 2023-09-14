@@ -55,6 +55,11 @@ export const getReleaseSource = () =>
         filename: `flyway-commandline-${releaseVersion}-linux-x64.tar.gz`,
         folder: `flyway-${releaseVersion}`
       },
+      arm64: {
+        url: `${repoBaseUrl}/${releaseVersion}/flyway-commandline-${releaseVersion}-macosx-arm64.tar.gz`,
+        filename: `flyway-commandline-${releaseVersion}-macosx-arm64.tar.gz`,
+        folder: `flyway-${releaseVersion}`
+      },
       darwin: {
         url: `${repoBaseUrl}/${releaseVersion}/flyway-commandline-${releaseVersion}-macosx-x64.tar.gz`,
         filename: `flyway-commandline-${releaseVersion}-macosx-x64.tar.gz`,
@@ -62,7 +67,7 @@ export const getReleaseSource = () =>
       }
     };
 
-    return sources[os.platform()];
+    return os.arch() === "arm64" ? sources.arm64 : sources[os.platform()];
   });
 
 /**
