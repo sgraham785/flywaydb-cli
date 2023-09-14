@@ -97,7 +97,15 @@ const getReleaseSource = exports.getReleaseSource = () => (0, _requestPromise2.d
     }
   };
 
-  return _os2.default.arch() === "arm64" ? sources.arm64 : sources[_os2.default.platform()];
+  // Apple Silicon version was released with 9.6.0
+  if (_os2.default.arch() === "arm64") {
+    const [majorVersion, minorVersion] = releaseVersion.split(".");
+    if (Number(majorVersion) >= 9 && Number(minorVersion) >= 6) {
+      return sources.arm64;
+    }
+  }
+
+  return sources[_os2.default.platform()];
 });
 
 /**
