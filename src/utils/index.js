@@ -70,7 +70,7 @@ export const getReleaseSource = () =>
     // Apple Silicon version was released with 9.6.0
     if (os.arch() === "arm64") {
       const [majorVersion, minorVersion] = releaseVersion.split(".");
-      if (Number(majorVersion) >= 9 && Number(minorVersion) >= 6) {
+      if (Number(majorVersion) > 9 || (Number(majorVersion) === 9 && Number(minorVersion) >= 6)) {
         return sources.arm64;
       }
     }
