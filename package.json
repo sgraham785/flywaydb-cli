@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sgraham785/flywaydb-cli.git"
+    "url": "git+https://github.com/jitterbox/flywaydb-cli.git"
   },
   "keywords": [
     "flyway",
@@ -28,9 +28,9 @@
   "author": "Sean Graham",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/sgraham785/flywaydb-cli/issues"
+    "url": "https://github.com/jitterbox/flywaydb-cli/issues"
   },
-  "homepage": "https://github.com/sgraham785/flywaydb-cli#readme",
+  "homepage": "https://github.com/jitterbox/flywaydb-cli#readme",
   "dependencies": {
     "extract-zip": "^1.6.5",
     "filesize": "^3.5.9",
