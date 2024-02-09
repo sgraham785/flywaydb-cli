@@ -189,7 +189,6 @@ const extractToLib = exports.extractToLib = file => {
   } else {
     _rimraf2.default.sync(extractDir);
     _fsExtra2.default.mkdirSync(extractDir);
-    return Promise.resolve(extractDir);
   }
 
   if (_path2.default.extname(file) === ".zip") {
@@ -203,7 +202,8 @@ const extractToLib = exports.extractToLib = file => {
         }
       });
     });
-  } else {
+  } 
+  else if (_path2.default.extname(file) === ".tar") {
     return new Promise((resolve, reject) => {
       (0, _child_process.spawn)("tar", ["zxf", file], {
         cwd: extractDir,
@@ -217,6 +217,9 @@ const extractToLib = exports.extractToLib = file => {
         }
       });
     });
+  }
+  else {
+    return Promise.resolve(extractDir);
   }
 };
 

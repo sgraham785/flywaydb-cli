@@ -169,12 +169,11 @@ export const extractToLib = file => {
   } else {
     rimraf.sync(extractDir);
     fs.mkdirSync(extractDir);
-    return Promise.resolve(extractDir);
   }
 
   if (path.extname(file) === ".zip") {
-    return new Promise((resolve, reject) => {
-      extractZip(file, { dir: extractDir }, err => {
+    return new Promise(function(resolve, reject) {
+      extractZip(file, { dir: extractDir }, function(err) {
         if (err) {
           console.error("Error extracting zip", err);
           reject(new Error("Error extracting zip"));
@@ -183,12 +182,12 @@ export const extractToLib = file => {
         }
       });
     });
-  } else {
-    return new Promise((resolve, reject) => {
-      spawn("tar", ["zxf", file], {
+  } else if (path.extname(file) === ".tar") {
+    return new Promise(function(resolve, reject) {
+      child_process.spawn("tar", ["zxf", file], {
         cwd: extractDir,
         stdio: "inherit"
-      }).on("close", code => {
+      }).on("close", function(code) {
         if (code === 0) {
           resolve(extractDir);
         } else {
@@ -197,6 +196,8 @@ export const extractToLib = file => {
         }
       });
     });
+  } else {
+    return Promise.resolve(extractDir);
   }
 };
 
